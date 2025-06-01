@@ -1,24 +1,31 @@
+/* make everything comfy to look at */
 body {
     margin: 0;
     padding: 20px;
     min-height: 100vh;
-    font-family: 'Poppins', Arial, sans-serif;
+    font-family: 'Kalam', cursive;
     background-color: #f5f7fa;
 }
 
+/* keep everything neat and centered */
 .container {
     max-width: 800px;
     margin: 0 auto;
     text-align: center;
 }
 
+/* make the title look handwritten */
 h1 {
     color: #2d3436;
-    font-size: 28px;
-    margin-bottom: 20px;
-    text-shadow: 1px 1px 2px rgba(0,0,0,0.1);
+    font-size: 32px;
+    margin-bottom: 15px;
+    font-family: 'Architects Daughter', cursive;
+    font-weight: normal;
+    transform: rotate(-1deg);
+    letter-spacing: 0.5px;
 }
 
+/* this is where the fun happens */
 .scene {
     position: relative;
     width: 100%;
@@ -30,10 +37,12 @@ h1 {
     transition: all 0.3s ease;
 }
 
+/* add a little depth when hovering */
 .scene:hover {
     box-shadow: 0 6px 25px rgba(0,0,0,0.12);
 }
 
+/* our friendly old man */
 #oldman {
     width: 300px;
     height: auto;
@@ -42,28 +51,37 @@ h1 {
     filter: drop-shadow(2px 2px 4px rgba(0,0,0,0.2));
 }
 
+/* the sneaky glasses that like to hide */
 #glasses {
     position: absolute;
-    width: 120px;
+    width: 25%;
+    min-width: 160px;
+    max-width: 250px;
     height: auto;
     cursor: pointer;
     transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
     filter: drop-shadow(1px 1px 2px rgba(0,0,0,0.15));
 }
 
+/* make them do a little dance on hover */
 #glasses:hover {
     transform: scale(1.15) rotate(5deg);
+}
+
+/* little hint text below the title */
+.subtitle {
+    color: #636e72;
+    font-size: 18px;
+    margin-top: -5px;
+    margin-bottom: 25px;
+    font-family: 'Kalam', cursive;
+    font-weight: 300;
+    transform: rotate(-0.5deg);
+    opacity: 0.8;
 }
 
 .title-emoji {
     font-size: 32px;
     margin-right: 8px;
     vertical-align: middle;
-}
-
-.subtitle {
-    color: #636e72;
-    font-size: 16px;
-    margin-top: -15px;
-    margin-bottom: 25px;
 } 
