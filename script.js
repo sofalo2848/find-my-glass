@@ -3,7 +3,7 @@ document.addEventListener('DOMContentLoaded', () => {
     const scene = document.querySelector('.scene');
     const oldman = document.getElementById('oldman');
 
-    // keep track of where glasses were last time
+    // remember last spot
     let lastPosition = { x: 0, y: 0 };
 
     function moveGlassesToRandomPosition() {
@@ -11,21 +11,21 @@ document.addEventListener('DOMContentLoaded', () => {
         const glassesRect = glasses.getBoundingClientRect();
         const oldmanRect = oldman.getBoundingClientRect();
 
-        // leave some space around the edges
+        // space from edges
         const padding = 20;
 
-        // time to find a new spot!
+        // find new spot
         let newX, newY;
         let isValidPosition = false;
         let attempts = 0;
         const maxAttempts = 100;
 
         while (!isValidPosition && attempts < maxAttempts) {
-            // pick a random spot on the screen
+            // try random spot
             newX = padding + Math.random() * (sceneRect.width - glassesRect.width - 2 * padding);
             newY = padding + Math.random() * (sceneRect.height - glassesRect.height - 2 * padding);
 
-            // make sure we don't put glasses on the old man's face!
+            // keep away from old man
             const safetyMargin = 40;
             const glassesLeft = newX;
             const glassesRight = newX + glassesRect.width;
@@ -37,7 +37,7 @@ document.addEventListener('DOMContentLoaded', () => {
             const oldmanTop = oldmanRect.top - sceneRect.top - safetyMargin;
             const oldmanBottom = oldmanRect.bottom - sceneRect.top + safetyMargin;
 
-            // don't want them too close to where they were before
+            // check if spot is far enough
             const minDistance = 40;
             const distanceFromLast = Math.sqrt(
                 Math.pow(newX - lastPosition.x, 2) + 
@@ -54,7 +54,7 @@ document.addEventListener('DOMContentLoaded', () => {
             attempts++;
         }
 
-        // if we're stuck, just put them in a corner
+        // use a corner if stuck
         if (!isValidPosition) {
             const corners = [
                 { x: padding, y: padding },
@@ -63,7 +63,7 @@ document.addEventListener('DOMContentLoaded', () => {
                 { x: sceneRect.width - glassesRect.width - padding, y: sceneRect.height - glassesRect.height - padding }
             ];
             
-            // try to find a corner far from last spot
+            // pick a far corner
             const validCorners = corners.filter(corner => {
                 const distance = Math.sqrt(
                     Math.pow(corner.x - lastPosition.x, 2) + 
@@ -80,23 +80,23 @@ document.addEventListener('DOMContentLoaded', () => {
             newY = corner.y;
         }
 
-        // remember where we put them
+        // save this spot
         lastPosition = { x: newX, y: newY };
 
-        // make it look smooth
+        // move glasses smoothly
         glasses.style.transition = 'all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275)';
         glasses.style.left = `${newX}px`;
         glasses.style.top = `${newY}px`;
     }
 
-    // give everything a sec to load up
+    // wait a bit before starting
     setTimeout(moveGlassesToRandomPosition, 100);
 
-    // when someone clicks the glasses...
+    // when glasses are clicked
     glasses.addEventListener('click', () => {
         moveGlassesToRandomPosition();
         
-        // do a little wiggle dance
+        // add bounce effect
         glasses.style.transform = 'scale(0.9) rotate(-5deg)';
         setTimeout(() => {
             glasses.style.transform = 'scale(1.1) rotate(5deg)';
@@ -105,4 +105,4 @@ document.addEventListener('DOMContentLoaded', () => {
             glasses.style.transform = 'scale(1) rotate(0)';
         }, 300);
     });
-}); 
+});

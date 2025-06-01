@@ -1,4 +1,4 @@
-/* make everything comfy to look at */
+/* just some basic setup */
 body {
     margin: 0;
     padding: 20px;
@@ -7,14 +7,14 @@ body {
     background-color: #f5f7fa;
 }
 
-/* keep everything neat and centered */
+/* center everything nicely */
 .container {
     max-width: 800px;
     margin: 0 auto;
     text-align: center;
 }
 
-/* make the title look handwritten */
+/* style the main heading */
 h1 {
     color: #2d3436;
     font-size: 32px;
@@ -25,7 +25,7 @@ h1 {
     letter-spacing: 0.5px;
 }
 
-/* this is where the fun happens */
+/* main game area */
 .scene {
     position: relative;
     width: 100%;
@@ -35,15 +35,15 @@ h1 {
     box-shadow: 0 4px 20px rgba(0,0,0,0.08);
     overflow: hidden;
     transition: all 0.3s ease;
-    border: none; /* make sure no border appears */
+    border: none;
 }
 
-/* add a little depth when hovering */
+/* lift up the game area on hover */
 .scene:hover {
     box-shadow: 0 6px 25px rgba(0,0,0,0.12);
 }
 
-/* our friendly old man */
+/* place the old man in the middle */
 #oldman {
     width: 300px;
     height: auto;
@@ -52,7 +52,7 @@ h1 {
     filter: drop-shadow(2px 2px 4px rgba(0,0,0,0.2));
 }
 
-/* the sneaky glasses that like to hide */
+/* make the glasses clickable */
 #glasses {
     position: absolute;
     width: 25%;
@@ -64,12 +64,12 @@ h1 {
     filter: drop-shadow(1px 1px 2px rgba(0,0,0,0.15));
 }
 
-/* make them do a little dance on hover */
+/* make glasses pop when you hover */
 #glasses:hover {
     transform: scale(1.15) rotate(5deg);
 }
 
-/* little hint text below the title */
+/* style the hint text */
 .subtitle {
     color: #636e72;
     font-size: 18px;
