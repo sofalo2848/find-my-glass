@@ -1,0 +1,69 @@
+body {
+    margin: 0;
+    padding: 20px;
+    min-height: 100vh;
+    font-family: 'Poppins', Arial, sans-serif;
+    background-color: #f5f7fa;
+}
+
+.container {
+    max-width: 800px;
+    margin: 0 auto;
+    text-align: center;
+}
+
+h1 {
+    color: #2d3436;
+    font-size: 28px;
+    margin-bottom: 20px;
+    text-shadow: 1px 1px 2px rgba(0,0,0,0.1);
+}
+
+.scene {
+    position: relative;
+    width: 100%;
+    height: 600px;
+    background-color: white;
+    border-radius: 15px;
+    box-shadow: 0 4px 20px rgba(0,0,0,0.08);
+    overflow: hidden;
+    transition: all 0.3s ease;
+}
+
+.scene:hover {
+    box-shadow: 0 6px 25px rgba(0,0,0,0.12);
+}
+
+#oldman {
+    width: 300px;
+    height: auto;
+    display: block;
+    margin: 20px auto;
+    filter: drop-shadow(2px 2px 4px rgba(0,0,0,0.2));
+}
+
+#glasses {
+    position: absolute;
+    width: 120px;
+    height: auto;
+    cursor: pointer;
+    transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+    filter: drop-shadow(1px 1px 2px rgba(0,0,0,0.15));
+}
+
+#glasses:hover {
+    transform: scale(1.15) rotate(5deg);
+}
+
+.title-emoji {
+    font-size: 32px;
+    margin-right: 8px;
+    vertical-align: middle;
+}
+
+.subtitle {
+    color: #636e72;
+    font-size: 16px;
+    margin-top: -15px;
+    margin-bottom: 25px;
+} 
